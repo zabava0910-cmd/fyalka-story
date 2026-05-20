@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="yandex-verification" content="ba2bd41c0e54f79f" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Fyalka Story | Вязаные игрушки ручной работы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', 'Roboto', 'Playfair Display', system-ui, -apple-system, 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* ГЛАВНАЯ КОНСТРУКЦИЯ: черные колонны + белая центральная плита */
+        .cathedral-container {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            max-width: 1400px;
+            width: 100%;
+            margin: 40px auto;
+            gap: 0;
+            background: transparent;
+            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.2);
+        }
+
+        /* ЛЕВАЯ ЧЕРНАЯ КОЛОННА (имитация опоры) */
+        .pillar-left {
+            width: 95px;
+            background: linear-gradient(145deg, #111111 0%, #1f1f1f 100%);
+            border-radius: 32px 0 0 32px;
+            box-shadow: 8px 0 15px rgba(0,0,0,0.3), inset -2px 0 2px rgba(255,255,255,0.05);
+            position: relative;
+            backdrop-filter: blur(0px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        /* ПРАВАЯ ЧЕРНАЯ КОЛОННА */
+        .pillar-right {
+            width: 95px;
+            background: linear-gradient(145deg, #111111 0%, #1f1f1f 100%);
+            border-radius: 0 32px 32px 0;
+            box-shadow: -8px 0 15px rgba(0,0,0,0.3), inset 2px 0 2px rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+        }
+
+        /* Декоративные элементы на колоннах */
+        .pillar-left::before,
+        .pillar-right::before {
+            content: "";
+            position: absolute;
+            top: 10%;
+            height: 80%;
+            width: 4px;
+            background: rgba(255,215,0,0.3);
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 4px;
+            box-shadow: 0 0 3px gold;
+        }
+
+        .pillar-left .ornament,
+        .pillar-right .ornament {
+            writing-mode: horizontal-tb;
+            font-size: 1.7rem;
+            letter-spacing: 4px;
+            color: rgba(255,255,200,0.7);
+            font-weight: 300;
+            text-align: center;
+            font-family: monospace;
+        }
+
+        .pillar-left .top-cap,
+        .pillar-right .top-cap {
+            font-size: 2.2rem;
+            margin-top: 15px;
+            color: #b87c4f;
+            text-shadow: 0 0 2px #ffd9a3;
+        }
+
+        .pillar-left .bottom-cap,
+        .pillar-right .bottom-cap {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #b87c4f;
+        }
+
+        /* БЕЛАЯ ОСНОВА — главный контент */
+        .white-core {
+            background: #ffffff;
+            flex: 1;
+            min-width: 280px;
+            padding: 40px 30px 60px 30px;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.02), 0 10px 25px -10px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+
+        /* стили текста и кнопок внутри белой основы */
+        .site-header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 25px;
+        }
+
+        .site-title {
+            font-size: 3.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a52);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            font-family: 'Playfair Display', 'Segoe UI', serif;
+        }
+
+        .sub-story {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #a5673f;
+            margin-top: 12px;
+            font-weight: 500;
+            background: #fff2e6;
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 40px;
+        }
+
+        /* описание — стильный текст с вязаной атмосферой */
+        .description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #2c2c2c;
+            background: #fefaf5;
+            padding: 28px 28px;
+            border-radius: 42px;
+            margin: 40px 0 50px 0;
+            box-shadow: inset 0 1px 4px #00000008, 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #fff0e0;
+            font-weight: 450;
+        }
+
+        .description strong {
+            color: #b6562c;
+            font-weight: 700;
+        }
+
+        .yarn-icon {
+            font-size: 1.4rem;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .quote {
+            font-style: italic;
+            margin-top: 20px;
+            border-left: 4px solid #d68b5c;
+            padding-left: 20px;
+            color: #4a4a4a;
+            font-size: 1rem;
+            background: #fff7f0;
+            border-radius: 0 20px 20px 0;
+        }
+
+        /* Блок кнопок соцсетей */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 28px;
+            margin: 45px 0 20px;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 60px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+            background: #f4f4f4;
+            color: #1a1a1a;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-family: inherit;
+            backdrop-filter: blur(2px);
+        }
+
+        .social-btn.vk {
+            background: #2787F5;
+            color: white;
+            box-shadow: 0 6px 14px rgba(39, 135, 245, 0.25);
+            border: none;
+        }
+
+        .social-btn.tg {
+            background: #26A5E4;
+            color: white;
+            box-shadow: 0 6px 14px rgba(38, 165, 228, 0.25);
+            border: none;
+        }
+
+        .social-btn.youtube {
+            background: #FF0000;
+            color: white;
+            box-shadow: 0 6px 14px rgba(255, 0, 0, 0.25);
+            border: none;
+        }
+
+        .social-btn.instagram {
+            background: #d62976;
+            background: linear-gradient(45deg, #f09433, #d62976, #962fbf);
+            color: white;
+            box-shadow: 0 6px 14px rgba(214, 41, 118, 0.3);
+            border: none;
+        }
+
+        .social-btn.vk:hover {
+            background: #1c6fc7;
+            transform: translateY(-4px);
+            box-shadow: 0 14px 22px rgba(0,0,0,0.15);
+        }
+
+        .social-btn.tg:hover {
+            background: #1f8bc0;
+            transform: translateY(-4px);
+            box-shadow: 0 14px 22px rgba(0,0,0,0.15);
+        }
+
+        .social-btn.youtube:hover {
+            background: #cc0000;
+            transform: translateY(-4px);
+            box-shadow: 0 14px 22px rgba(0,0,0,0.15);
+        }
+
+        .social-btn.instagram:hover {
+            background: #bc2a8d;
+            background: linear-gradient(45deg, #e07a2c, #bc2a8d, #7a2e9e);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 22px rgba(0,0,0,0.15);
+        }
+
+        .social-btn:active {
+            transform: translateY(2px);
+            transition: 0.05s;
+        }
+
+        .btn-icon {
+            font-size: 1.5rem;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 55px;
+            font-size: 0.8rem;
+            color: #aaa;
+            border-top: 1px dashed #eee;
+            padding-top: 24px;
+        }
+
+        /* адаптивность: на узких экранах колонны уменьшаются */
+        @media (max-width: 780px) {
+            .pillar-left, .pillar-right {
+                width: 48px;
+            }
+            .pillar-left .top-cap,
+            .pillar-right .top-cap,
+            .pillar-left .bottom-cap,
+            .pillar-right .bottom-cap {
+                font-size: 1.2rem;
+            }
+            .site-title {
+                font-size: 2.4rem;
+            }
+            .social-btn {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            .white-core {
+                padding: 30px 18px;
+            }
+            .description {
+                font-size: 1rem;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .pillar-left, .pillar-right {
+                width: 28px;
+            }
+            .pillar-left .ornament, .pillar-right .ornament {
+                font-size: 0.8rem;
+                writing-mode: vertical-rl;
+            }
+            .cathedral-container {
+                margin: 20px auto;
+            }
+            .site-title {
+                font-size: 1.9rem;
+            }
+            .social-links {
+                gap: 16px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .social-btn {
+                width: 85%;
+                justify-content: center;
+            }
+        }
+
+        .pillar-left:hover, .pillar-right:hover {
+            filter: brightness(1.02);
+            transition: 0.2s;
+        }
+
+        .white-core {
+            animation: fadeSlideUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cathedral-container">
+    <!-- ЛЕВАЯ ЧЕРНАЯ КОЛОННА -->
+    <div class="pillar-left">
+        <div class="top-cap">🧶</div>
+        <div class="ornament">⚫︎ ⚫︎ ⚫︎</div>
+        <div class="bottom-cap">🪡</div>
+    </div>
+
+    <!-- БЕЛАЯ ОСНОВА (сайт о вязаных игрушках) -->
+    <div class="white-core">
+        <div class="site-header">
+            <h1 class="site-title">fyalka story</h1>
+            <div class="sub-story">✦ вязаные игрушки с душой ✦</div>
+        </div>
+
+        <div class="description">
+            <p><span class="yarn-icon">🧸</span> <strong>Fyalka Story</strong> — это уютная мастерская, где пряжа превращается в тёплые, живые игрушки.  
+            Мы создаём <strong>амигуруми</strong> и вязаных зверят, которые дарят радость и детям, и взрослым.  
+            Каждая игрушка связана вручную с любовью, без спешки — чтобы подарить вам частичку домашнего тепла.</p>
+            <p>🐻 <strong>Что мы вяжем?</strong> Забавных мишек, зайчиков, котиков, лисичек и других мягких друзей.  
+            Любые образы по вашим эскизам — превращаем фантазию в мягкую реальность. Используем только гипоаллергенную пряжу и безопасный наполнитель.</p>
+            <div class="quote">
+                🧶 «Каждый стежок — это маленькая история. Свяжем вашу уникальную игрушку, которая будет греть сердце годами.»
+            </div>
+            <p style="margin-top: 20px;">📚 В наших соцсетях — <strong>бесплатные схемы</strong>, мастер-классы, видеоуроки и процесс создания игрушек.  
+            Подписывайтесь, чтобы вязать вместе и вдохновляться!</p>
+        </div>
+
+        <!-- Кнопки соцсетей: VK, Telegram, YouTube, Instagram -->
+        <div class="social-links">
+            <a href="https://vk.ru/club_fyalka_story" class="social-btn vk" target="_blank" rel="noopener noreferrer">
+                <span class="btn-icon">📱</span> VK · fyalka_story
+            </a>
+            <a href="https://t.me/fyalka_story" class="social-btn tg" target="_blank" rel="noopener noreferrer">
+                <span class="btn-icon">✈️</span> Telegram · @fyalka_story
+            </a>
+            <a href="https://youtube.com/@fyalka_story?si=jZKczWI1-tGRVqkf" class="social-btn youtube" target="_blank" rel="noopener noreferrer">
+                <span class="btn-icon">📺</span> YouTube · вязание с fyalka
+            </a>
+            <a href="https://www.instagram.com/fyalka_story?utm_source=qr&igsh=MXh3eXJnamY3N213dg==" class="social-btn instagram" target="_blank" rel="noopener noreferrer">
+                <span class="btn-icon">📷</span> Instagram · @fyalka_story
+            </a>
+        </div>
+
+        <div class="footer-note">
+            🧵 fyalka story — каждая игрушка связана с теплом<br>
+            колонны — символ надёжности и вашего уюта 🏡
+        </div>
+    </div>
+
+    <!-- ПРАВАЯ ЧЕРНАЯ КОЛОННА -->
+    <div class="pillar-right">
+        <div class="top-cap">🧵</div>
+        <div class="ornament">⬤ ⬤ ⬤</div>
+        <div class="bottom-cap">🪢</div>
+    </div>
+</div>
+
+</body>
+</html>
